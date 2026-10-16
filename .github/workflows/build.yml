@@ -22,9 +22,13 @@ jobs:
           flutter-version: '3.19.x'
           channel: 'stable'
 
-      - name: Clean and create Android platform
+      - name: Create Clean Flutter Project
         run: |
-          flutter create . --platforms=android --org com.example.livephoto
+          cd ..
+          flutter create live_app --platforms=android
+          cp -r live_app/* ./
+          cp -r live_app/.* ./ || true
+          rm -rf live_app
 
       - name: Install Dependencies
         run: flutter pub get
